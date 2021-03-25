@@ -1,0 +1,16 @@
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: compression-bin-invocation
+spec:
+  selector:
+    nodeSelectorLabels:
+        key: value
+
+  process:
+    matchPatterns:
+    - pattern: (/bzip2* | /tar* | /zip*)
+  action:
+    Audit
+  severity: 5
+

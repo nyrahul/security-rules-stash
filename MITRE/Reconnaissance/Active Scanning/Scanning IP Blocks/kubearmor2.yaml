@@ -1,0 +1,10 @@
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: mitre-tactic-active-scanning2
+spec:
+  network:
+    - disable_raw_capability
+  action:
+    Block
+  severity: 5

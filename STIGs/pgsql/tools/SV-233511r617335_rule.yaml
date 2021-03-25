@@ -1,0 +1,22 @@
+#Rule Title: PostgreSQL must be conﬁgured to prohibit or restrict the use of organization-deﬁned functions, ports, protocols, and/or services, as deﬁned in the PPSM CAL and vulnerability assessments.
+#Rule1:
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: SV-233511r617335_rule
+  namespace: postgres
+spec:
+  severity: 2
+  selector:
+    matchLabels:
+      app: postgres
+  cron: "0 30 * * * *"
+    - check-ports: 5432
+  condition:
+  process:
+    matchPaths:
+    - path: *postgres
+  action:
+    Block
+
+

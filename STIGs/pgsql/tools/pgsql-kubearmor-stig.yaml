@@ -1,0 +1,19 @@
+
+#Rule Title: The audit information produced by PostgreSQL must be protected from unauthorized modification.
+#Rule1: Only allow postgres processes to access the 
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: SV-233514r617333_rule
+  namespace: postgres
+spec:
+  severity: 2
+  selector:
+    matchLabels:
+      app: postgres
+  process:
+    matchPaths:
+    - path: *postgres
+  action:
+    Block
+

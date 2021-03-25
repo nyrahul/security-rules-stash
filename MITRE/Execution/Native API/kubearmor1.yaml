@@ -1,0 +1,15 @@
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: mitre-tactic-active-scanning1
+spec:
+  selectorLabels:
+      nodeSelector:
+          hostname: xyz
+  syscall:
+    matchName:
+    - name: syscall
+    - parameter: *
+  action:
+    Audit
+  severity: 5

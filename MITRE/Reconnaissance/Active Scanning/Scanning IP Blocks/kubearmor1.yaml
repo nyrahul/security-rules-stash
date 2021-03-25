@@ -1,0 +1,18 @@
+apiVersion: security.accuknox.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: mitre-tactic-active-scanning1
+spec:
+  selectorLabels:
+      nodeSelector:
+          hostname: xyz
+  tcp_scans:
+    matchAddresses:
+    - ipv4: 0.0.0.0/0 # Match any IPv4 address
+    - scan_threshold: 20 # 20 address are scanned per sec
+  icmp_scans:
+    matchAddresses:
+    - ipv4: 0.0.0.0/0 # Match any IPv4 address
+  action:
+    Audit
+  severity: 5
